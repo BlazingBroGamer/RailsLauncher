@@ -46,6 +46,6 @@ Icon
 *.iws
 
 #Eclipse
-#*.classpath
-#*.project
-#/.settings
+*.classpath
+*.project
+/.settings
