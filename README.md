@@ -7,14 +7,14 @@ is written in Java.
 
 The actual server implementation is found here:
 
-[Rails Core](https://github.com/RONNOC777/ProjectRailsCore)
+[Rails API](https://github.com/PoweredRails/Rails-API)
 
 Status
 ------
 
 The Bootstrap has only just begun development, and isn't
 available for download yet. We hope to get the Bootstrap
-and Core available soon!
+and API available soon!
 
 We will be adding more information later on through the
 development of the project!
