@@ -24,7 +24,10 @@ Credits
 
 ### Developers:
 
- * [RONNOC777](https://github.com/RONNOC777)
- * [EpixPenguin](https://github.com/EpixPenguin)
- * [FightingSora](https://github.com/fightingsora)
+ * [RONNOC777](https://github.com/RONNOC777) - Project Leader
+ * [EpixPenguin](https://github.com/EpixPenguin) - Developer
+ * [FightingSora](https://github.com/fightingsora) - Developer
+ * [EpixPenguin](https://github.com/EpixPenguin) - Developer
+ * [slimshadeey1](https://github.com/slimshadeey1) - Web Designer / Web Developer / Developer 
+ * [XeroElixir](https://github.com/XeroElixir) - Web Designer / Web Developer
 
