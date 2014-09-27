@@ -1,0 +1,40 @@
+configurations {
+    deployerJars
+}
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+}
+
+dependencies {
+}
+
+apply plugin: 'maven'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // Load config.  It shall from now be referenced as simply config or project.config
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = project.config.Minecraft.version + "-" + project.config.project.version
+group = 'org.poweredrails'
+archivesBaseName = project.config.project.name + "-" + project.config.project.sub
+
+task setupEclipse << {
+    println 'Finished setting up the eclipse workspace!'
+
+}
+setupEclipse {}.dependsOn('cleanEclipse','eclipse')
