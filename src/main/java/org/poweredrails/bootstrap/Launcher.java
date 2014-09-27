@@ -10,16 +10,12 @@
  */
 
 
-package com.gmail.ronnoc777999.rails.bootstrap;
+package org.poweredrails.bootstrap;
 
-public class Main {
+public class Launcher {
 	
 	/*
-	 *             - = Project Rails Bootstrap = -
-	 *             
-	 *            We will start developing this soon!
-	 *            
-	 *            
+	 *         Adding stuff here soon! ;D
 	 */
 
 }
