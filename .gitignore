@@ -39,6 +39,7 @@ Icon
 
 # Gradle Build
 /build
+/.gradle
 
 #Idea IntelliJ
 *.iml
