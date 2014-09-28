@@ -12,12 +12,16 @@
 
 package org.poweredrails.bootstrap;
 
-public class Launcher {
-	
-	/*
-	 *         Adding stuff here soon! ;D
-	 */
-	
-	
 
-}
+	public enum LauncherState {
+		LOADING,
+		CHECKUPDATE,
+		OPENCONNECTION,
+		PRELOAD,
+		LAUNCHER_OPENED,
+		LAUNCHER_CLOSING,
+		CLOSE_CLIENT,
+		END
+	}
+
+

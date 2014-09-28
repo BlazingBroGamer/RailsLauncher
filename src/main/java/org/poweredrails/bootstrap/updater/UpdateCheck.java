@@ -10,14 +10,10 @@
  */
 
 
-package org.poweredrails.bootstrap;
+package org.poweredrails.bootstrap.updater;
 
-public class Launcher {
-	
-	/*
-	 *         Adding stuff here soon! ;D
-	 */
-	
-	
+import org.poweredrails.bootstrap.Launcher;
+
+public class UpdateCheck extends Launcher {
 
 }

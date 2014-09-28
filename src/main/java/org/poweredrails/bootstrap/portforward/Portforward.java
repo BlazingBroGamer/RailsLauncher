@@ -10,14 +10,16 @@
  */
 
 
-package org.poweredrails.bootstrap;
+package org.poweredrails.bootstrap.portforward;
 
-public class Launcher {
+import org.poweredrails.bootstrap.Launcher;
+
+public class Portforward extends Launcher {
 	
 	/*
-	 *         Adding stuff here soon! ;D
+	 * 
+	 *             Adding Portforward code here soon!
+	 * 
 	 */
-	
-	
 
 }

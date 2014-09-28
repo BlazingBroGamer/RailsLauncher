@@ -10,14 +10,16 @@
  */
 
 
-package org.poweredrails.bootstrap;
+package org.poweredrails.bootstrap.socket;
 
-public class Launcher {
+import org.poweredrails.bootstrap.Launcher;
+
+public class SocketConnection extends Launcher {
 	
 	/*
-	 *         Adding stuff here soon! ;D
+	 * 
+	 *           Slim will add his NETTY stuff here soon xP
+	 * 
 	 */
-	
-	
 
 }
