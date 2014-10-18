@@ -1,4 +1,4 @@
-/*
+/**
  *     This file is a part of Rails, licensed under the MIT License (MIT)
  *     
  *     Copyright (c) PoweredRails <http://www.poweredrails.org>
@@ -12,14 +12,23 @@
 
 package org.poweredrails.bootstrap.portforward;
 
-import org.poweredrails.bootstrap.Launcher;
-
-public class Portforward extends Launcher {
+public interface Forwarder {
 	
-	/*
+	/**
+	 * Returns the forwarder.
 	 * 
-	 *             Adding Portforward code here soon!
-	 * 
+	 * @return
 	 */
+	
+	Forwarder forwarder();
+	
+	/**
+	 * Gets the main arguments needed to portforward.
+	 * 
+	 * @param args
+	 * @return
+	 */
+    
+    Forwarder main(String[] args);
 
 }

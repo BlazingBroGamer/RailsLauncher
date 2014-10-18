@@ -1,4 +1,4 @@
-/*
+/**
  *     This file is a part of Rails, licensed under the MIT License (MIT)
  *     
  *     Copyright (c) PoweredRails <http://www.poweredrails.org>
@@ -12,18 +12,17 @@
 
 package org.poweredrails.bootstrap.commandinterface;
 
-import org.poweredrails.bootstrap.Launcher;
 
-public class CPInterface extends Launcher {
+public interface CPInterface {
 	
-	/*
-	 *       This will choose either to open the console, panel or both!
-	 *       
-	 *       This will also execute to opening of a new port for the panel.
-	 */
+    /**
+     * Chooses the interface to open!
+     * 
+     * @param console
+     * @param openPanel
+     * @return
+     */
 	
-	public CPInterface(boolean console, boolean openPanel) {
-		
-	}
+	CPInterface createInterface(boolean console, boolean openPanel);
 
 }

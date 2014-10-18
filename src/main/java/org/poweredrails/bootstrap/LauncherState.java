@@ -1,4 +1,4 @@
-/*
+/**
  *     This file is a part of Rails, licensed under the MIT License (MIT)
  *     
  *     Copyright (c) PoweredRails <http://www.poweredrails.org>
