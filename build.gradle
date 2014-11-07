@@ -1,40 +1,139 @@
-configurations {
-    deployerJars
-}
+// Gradle build script (Includes Repo's and Dependencies)
+
 buildscript {
     repositories {
-        mavenCentral()
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0'
+    }	
+}
+
+// Maven Repositories
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/repositories/snapshots/"
     }
 }
 
-dependencies {
-}
+// Gradle Plugins
 
-apply plugin: 'maven'
 apply plugin: 'java'
+apply plugin: 'license'
+apply plugin: 'checkstyle'
+apply plugin: 'maven'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+// Default tasks
 
-ext.configFile = file "build.properties"
+defaultTasks 'licenseFormat', 'check', 'build'
 
-configFile.withReader {
-    // Load config.  It shall from now be referenced as simply config or project.config
-    def prop = new Properties()
-    prop.load(it)
-    project.ext.config = new ConfigSlurper().parse prop
+// Project Info
+
+group = 'org.poweredrails'
+archivesBaseName = "bootstrap"
+version = "0.0.1"
+
+// Ext Project Info
+
+ext.projectName = 'RailsLauncher'
+ext.inceptionYear = '2014'
+ext.packaging = 'jar'
+ext.url = 'http://poweredrails.org'
+ext.description = 'RailsLauncher'
+ext.organization = 'PoweredRails'
+
+// Variables
+
+ext.buildNumber = project.hasProperty("buildNumber") ? buildNumber : '0'
+ext.ciSystem = project.hasProperty("ciSystem") ? ciSystem : 'unknown'
+ext.commit = project.hasProperty("commit") ? commit : 'unknown'
+
+// Java Version
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+// Dependencies
+
+dependencies {
+    compile 'org.apache.logging.log4j:log4j-api:2.0-beta9'
+    compile 'com.google.guava:guava:16.0'
+    compile 'com.google.code.findbugs:jsr305:1.3.9'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'org.mockito:mockito-core:1.9.0'
+    compile 'org.javatuples:javatuples:1.2'
 }
 
-version = project.config.Minecraft.version + "-" + project.config.project.version
-group = 'org.poweredrails'
-archivesBaseName = project.config.project.name + "-" + project.config.project.sub
+// Filter, process, and include resources
+processResources {
+    // Include in final JAR
+    from 'LICENSE.txt'
+}
+
+// License header formatting
+license {
+    ext.name = project.name
+    ext.organization = project.organization
+    ext.url = project.url
+    ext.year = project.inceptionYear
+    exclude "**/*.info"
+    exclude "assets/**"
+    header file('HEADER.txt')
+    sourceSets = project.sourceSets
+    ignoreFailures false
+    strictCheck true
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
+}
+
+// Checkstyle
+
+checkstyle {
+    configProperties = [
+        "name" : project.name,
+        "organization" : project.organization,
+        "url" : project.url,
+        "year" : project.inceptionYear
+    ]
+    configFile = file("checkstyle.xml")
+}
+
+// Compiler Config
+
+configure([compileJava, compileTestJava]) {
+    options.compilerArgs += [ '-Xlint:all', '-Xlint:-path' ]
+    options.deprecation = true
+    options.encoding = 'utf8'
+}
+
+// JAR manifest configuration
+jar.manifest.mainAttributes(
+        "Built-By": System.properties['user.name'],
+        "Created-By": System.properties['java.vm.version'] + " (" + System.properties['java.vm.vendor'] + ")",
+        "Implementation-Title": name,
+        "Implementation-Version": version + "+" + ciSystem + "-b" + buildNumber + ".git-" + commit,
+        "Implementation-Vendor": url)
+
+
+// Setting up Eclipse
 
 task setupEclipse << {
-    println 'Finished setting up the eclipse workspace!'
+    println 'Completed setting up Eclipse Workspace!'
 
 }
 setupEclipse {}.dependsOn('cleanEclipse','eclipse')
+
+// DEBUG PART
+
+// Jar Listing
+
+task listJars << {
+    configurations.compile.each { File file -> println file.name }
+}

@@ -1,0 +1,7 @@
+This file is a part of Rails, licensed under the MIT License (MIT)
+
+Copyright (c) PoweredRails <http://www.poweredrails.org>
+Copyright (c) SpongePowered.org <http://www.spongepowered.org>
+Copyright (c) Contributers
+
+Read "LICENSE.md" for the full license!
