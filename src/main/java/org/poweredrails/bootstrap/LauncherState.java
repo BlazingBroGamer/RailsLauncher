@@ -13,15 +13,26 @@
 package org.poweredrails.bootstrap;
 
 
-	public enum LauncherState {
-		LOADING,
-		CHECKUPDATE,
-		OPENCONNECTION,
-		PRELOAD,
-		LAUNCHER_OPENED,
-		LAUNCHER_CLOSING,
-		CLOSE_CLIENT,
-		END
-	}
+    public enum LauncherState {
+        LOADING,
+        CHECKUPDATE,
+        OPENCONNECTION,
+        PRELOAD,
+        LAUNCHER_OPENED,
+        LAUNCHER_CLOSING,
+        CLOSE_CLIENT,
+        END;
+
+        static LauncherState currentState;
+
+        public static LauncherState getState(){
+            return currentState;
+        }
+
+        public static void setState(LauncherState ls){
+            currentState = ls;
+        }
+
+}
 
 
